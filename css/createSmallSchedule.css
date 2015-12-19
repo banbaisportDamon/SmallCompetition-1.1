@@ -1,0 +1,32 @@
+#createSmallSchedule #topPopover {
+	position: fixed;
+	top: 12px;
+	right: 6px;
+	width: 120px;
+}
+#createSmallSchedule #topPopover .mui-popover-arrow {
+	left: auto;
+	right: 6px;
+}
+#createSmallSchedule input.mui-input-clear {background-color: #fff;}
+
+#createSmallSchedule .tournament {
+	padding: 15px 5px;
+	background-color: #fff;
+	margin-bottom: 20px;
+	border-radius: 2%;
+	box-shadow: 5px 5px 5px #888888;
+}
+#createSmallSchedule .tournament .competitionLogo img {border-radius: 50%;}
+#createSmallSchedule .tournament tr {color: #6e6e6e; height: 20px;}
+#createSmallSchedule .tournament tr:first-child {color: #000;}
+#createSmallSchedule .tournament td {height: 20px;}
+#createSmallSchedule .tournament .tournament-name { 
+	height: 15px; 
+	color: #18b4ed; 
+	line-height: 15px;
+}
+#createSmallSchedule hr {
+	border: 0.5px solid #ccc;
+}
+#createSmallSchedule .mui-scroll-wrapper { top:90px } 
