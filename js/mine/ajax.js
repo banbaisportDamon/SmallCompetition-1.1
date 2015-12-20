@@ -1,4 +1,3 @@
-var G_URL = "http://192.168.199.206:8081/"
 
 function doSendAjaxRequest(xurl,param,fnCallback){
     if ( xurl.indexOf('http://') == -1 ) xurl = G_URL+xurl;

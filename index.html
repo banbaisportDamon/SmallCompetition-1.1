@@ -18,10 +18,35 @@
     			.mui-bar.mui-bar-nav a{color:#fff;}
     			.mui-bar.mui-bar-nav span{color:#fff; height:1.6em}
     			.mui-bar.mui-bar-nav h1 {color:#fff;} 
+    			
+    			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
 			
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
-		<link rel="stylesheet" type="text/css" href="css/createSmallSchedule.css" />
+		<link rel="stylesheet" type="text/css" href="css/smallScheduleList.css" />
 	</head>
 
 	<body>
@@ -35,8 +60,8 @@
 			</div>
 		</div>
 		<!--页面主结构结束-->
-<!-----------------------------------------------------------------------------createSmallSchedule页面开始--------------------------------------------------------------------------------->
-		<div id="createSmallSchedule" class="mui-page">
+<!-----------------------------------------------------------------------------smallScheduleList页面开始--------------------------------------------------------------------------------->
+		<div id="smallScheduleList" class="mui-page">
 			<div class="mui-navbar-inner mui-bar mui-bar-nav">
 				<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
@@ -45,7 +70,7 @@
 				<a href="#topPopover" class="mui-action-menu mui-icon mui-icon-plusempty mui-pull-right"></a>
 			</div>
 			<div class="mui-page-content">
-				<div class="mui-content-padded" style="margin: 50px 5px 5px 5px;">
+				<div class="mui-content-padded" style="margin: 5px;">
 					<div class="mui-input-row mui-search">
 						<input type="search" class="mui-input-clear" placeholder="搜索">
 					</div>
@@ -100,7 +125,7 @@
 			<div id="topPopover" class="mui-popover">
 				<div class="mui-popover-arrow mui-pull-right"></div>
 					<ul class="mui-table-view mui-pull-right">
-						<li class="mui-table-view-cell"><a id="createMinorTournamentNew" href="#">创建比赛</a>
+						<li class="mui-table-view-cell"><a href="#createSmallSchedule">创建比赛</a>
 						</li>
 						<li class="mui-table-view-cell"><a href="#">内部对抗赛</a>
 						</li>
@@ -110,26 +135,166 @@
 				</div>
 			</div>
 		</div>
-<!-----------------------------------------------------------------------------createSmallSchedule页面结束--------------------------------------------------------------------------------->
+<!-----------------------------------------------------------------------------smallScheduleList页面结束--------------------------------------------------------------------------------->
 
-<!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-----------------------------------------------------------------------------createSmallScheduleList页面开始--------------------------------------------------------------------------------->
 	
-<!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
+		<div id="createSmallSchedule" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="index.html"></a>
+				<h1 class="mui-center mui-title tc">创建比赛</h1>
+			</div>
+			<div class="mui-page-content">
+				<form class="mui-input-group mb10">
+					<div class="mui-input-row">
+						<label>比赛名称</label>
+						<input id="competitionName" type="text" class="mui-input-clear" placeholder="请输入比赛名称">
+					</div>
+					<div class="mui-input-row">
+						<label>比赛地点</label>
+						<input id="competitionLocation" type="text" class="mui-input-clear" placeholder="请输入比赛地点">
+					</div>
+				</form>
+			
+				<ul class="mui-table-view">
+					<li id="selectTournamentPlayers" class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#">
+						选择参赛队员
+						</a>
+					</li>
+					<li id="selectTime" class="mui-table-view-cell">
+						<label>选择比赛时间</label>
+						<table class="fr">
+							<tr>
+								<td><span class="mui-icon mui-icon-back tc"></span></td>
+								<td id="scheduleTime" class="tc">今天</td>
+								<td><span class="mui-icon mui-icon-forward tc"></span></td>
+							</tr>
+						</table>
+					</li>
+					<li class="mui-table-view-cell">
+						<label>选择赛制</label>
+						<table class="fr">
+							<tr>
+								<td><span class="mui-icon mui-icon-back tc"></span></td>
+								<td id="competitionType" class="tc">PK对抗赛</td>
+								<td><span class="mui-icon mui-icon-forward tc"></span></td>
+							</tr>
+						</table>
+					</li>
+				</ul>
+			
+				<ul class="mui-table-view mt10">
+					<li class="mui-table-view-cell">
+						<label>局数</label>
+						<table class="fr">
+							<tr>
+								<td><span id="roundMinus" class="mui-icon mui-icon-minus tc"></span></td>
+								<td id="round" class="tc" width="60px">11</td>
+								<td><span id="roundPlus" class="mui-icon mui-icon-plus tc"></span></td>
+							</tr>
+						</table>
+					</li>
+					<li class="mui-table-view-cell">
+						<label>分数</label>
+						<table class="fr">
+							<tr>
+								<td><span  id="normalScoreMinus" class="mui-icon mui-icon-minus tc"></span></td>
+								<td id="normalScore" class="tc" width="60px">21</td>
+								<td><span  id="normalScorePlus" class="mui-icon mui-icon-plus tc"></span></td>
+							</tr>
+						</table>
+					</li>
+					<li class="mui-table-view-cell">
+						<label>最高分</label>
+						<table class="fr">
+							<tr>
+								<td><span id="topScoreMinus" class="mui-icon mui-icon-minus tc"></span></td>
+								<td id="topScore" class="tc" width="60px">31</td>
+								<td><span id="topScorePlus" class="mui-icon mui-icon-plus tc"></span></td>
+							</tr>
+						</table>
+					</li>
+					<li class="mui-table-view-cell">
+						<label>排名条件</label>
+						<table class="fr">
+							<tr>
+								<td><span class="mui-icon mui-icon-back tc"></span></td>
+								<td id="rankCondition" class="tc">净胜局</td>
+								<td><span class="mui-icon mui-icon-forward tc"></span></td>
+							</tr>
+						</table>
+		       		</li>
+		    		</ul>
+		    
+		    		<ul id="otherLeaderButton" class="mui-table-view mt10">
+					<li class="mui-table-view-cell">
+						<span>是否邀请其他成员</span>
+						<div class="mui-switch mui-switch-mini">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+				<ul id="selectOtherLeader" class="mui-table-view" >
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#">
+						<table>
+							<tr>
+								<td><img src="img/teamleader.png" width="30px" height="30px" /></td>
+								<td class="tc" width="160px">点击选择对方领队</td>
+							</tr>
+						</table>
+						</a>
+					</li>
+				</ul>
+				<div id='userResult' class="ui-alert"></div>
+				<div id="confirmCreate" class="mui-content-padded pl30 pr30">
+					<button type="button" class="mui-btn mui-btn-block">确定</button>
+				</div>
+				<div id="debugdiv">
+					<button id="debug">创建</button>
+				</div>
+			</div>
+		</div>
+			
+<!-----------------------------------------------------------------------------createSmallScheduleList页面结束--------------------------------------------------------------------------------->
+		<div id="feedback" class="mui-page feedback">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>关于MUI
+				</button>
+				<h1 class="mui-center mui-title">问题反馈</h1>
+			</div>
+			<div class="mui-page-content">
+				<p>问题和意见</p>
+				<div class="row mui-input-row">
+					<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
+				</div>
+				<p>图片(选填,提供问题截图)</p>
+				<div id='image-list' class="row image-list">
+				</div>
+				<p>QQ/邮箱</p>
+				<div class="mui-input-row">
+					<input id='contact' type="text" class="mui-input-clear  contact" placeholder="(选填,方便我们联系你 )" />
+				</div>
+				<button id='submit' type="button" class="mui-btn mui-btn-green">提交</button>
+			</div>
+			<p>此示例基于环信 “WebIM SDK” + 环信 “移动客服” 实现，在环信 “移动客服面板” 能够查阅反馈信息。</p>
+		</div>
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 	</body>
 	
+	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/mui.min.js "></script>
 	<script src="js/mui.view.js "></script>
-	
-	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/mine/smallScheduleList.js"></script>
 	<script>
 	/*-----------------------------------------------initialize begin--------------------------------------------------*/
 		mui.init({statusBarBackground: '#18b4ed'});
 		//初始化单页view
 		var viewApi = mui('#app').view({
-			defaultPage: '#createSmallSchedule'
+			defaultPage: '#smallScheduleList'
 		});
 		var view = viewApi.view;
 		(function(m) {
@@ -143,23 +308,30 @@
 				}
 			};
 		})(mui);
-		mui('.mui-scroll-wrapper').scroll();
+		
 	/*-----------------------------------------------initialize begin--------------------------------------------------*/
-	
-	
-	
-		// Global Var
+		var _URL								= "http://192.168.199.206:8081/";
 		var _userId 							= -1;
 		var _loginTime 						= -1;
 		var _idCheck 						= '1439286113287,0';
-		var _smallScheduleList				= [];
-		var _smallScheduleListDetail 		= [];
-
-		alert("shs");
-		getSmallScheduleList();
-		alert("du");
+		var _smallScheduleList				= {};
+		var _smallScheduleListDetail 		= {};
+		var _smallScheduleListClickedId		= -1;
+		
+		getSmallScheduleList(_idCheck, -1, -1, -1, -1);
+		
+	</script>
+	<script>
+		/*------------------------------处理首页的点击事件------------------------------*/
+		$(document).ready(function(){
+			$("#smallScheduleList").on("click","a", function(){
+				_smallScheduleListClickedId = $(this).attr("data-value");
+				alert("yes");
+			});
+			$("#topPopover").on("click", "a", function(){
+				
+			});
+		});
 	</script>
 </body>
-<script src="js/ajax.js "></script>
-<script src="js/mine/createSmallSchedule.js"></script>
 </html>
